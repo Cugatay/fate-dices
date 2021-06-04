@@ -19,26 +19,19 @@ export default function App() {
   const [sound, setSound] = useState<Audio.Sound | null>(null);
 
   async function playSound() {
-    console.log('Loading Sound');
     const { sound } = await Audio.Sound.createAsync(
       require('./dice-sound.m4a')
     );
     setSound(sound);
 
-    console.log('Playing Sound');
     await sound.playAsync(); }
 
   useEffect(() => {
     return sound
       ? () => {
-        console.log('Unloading Sound');
         sound.unloadAsync(); }
       : undefined;
   }, [sound]);
-
-
-  console.log('sound');
-  console.log(sound);
 
   interface Dice {
     number: number,
@@ -104,6 +97,7 @@ const styles = StyleSheet.create({
   },
   diceContainer: {
     width: normalize(340),
+    maxWidth: 340,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'

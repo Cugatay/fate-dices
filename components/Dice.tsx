@@ -55,8 +55,6 @@ const Dice = ({color, isAnimating, isPressed, index, number, setDice}: Props) =>
     }
   }, [isPressed]);
 
-  console.log(number);
-
   return (
     <Animated.View style={[styles.dice, {backgroundColor: color, transform: [{scale: scaleInterpolate}]}]}>
       {
@@ -73,8 +71,11 @@ const styles = StyleSheet.create({
   dice: {
     width: normalize(150),
     height: normalize(150),
-    margin: normalize(10),
-    borderRadius: normalize(24),
+    maxWidth: 150,
+    maxHeight: 150,
+    // maxWidth: 1
+    margin: 10,
+    borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
